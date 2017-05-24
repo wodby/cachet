@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  nginx:
+    image: $NGINX_CACHET
+    environment:
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_NAME: cachet.test
+    volumes:
+      - codebase:/var/www/html
+    depends_on:
+      - php
+
+  mariadb:
+    image: $POSTGRES
+    environment:
+      POSTGRES_USER: cachet
+      POSTGRES_PASSWORD: cachet
+      POSTGRES_DB: cachet
+
+  redis:
+    image: $REDIS
+    environment:
+      REDIS_PASSWORD: redis
+
+  php:
+    image: $IMAGE
+    environment:
+      APP_KEY: cachet-generated-app-key
+    volumes:
+      - codebase:/var/www/html
+
+volumes:
+  codebase:
