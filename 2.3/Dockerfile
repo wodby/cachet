@@ -12,4 +12,3 @@ RUN mkdir -p /usr/src/cachet && \
 
 COPY actions /usr/local/bin/
 COPY env.tpl /etc/gotpl/
-COPY init /docker-entrypoint-init.d/

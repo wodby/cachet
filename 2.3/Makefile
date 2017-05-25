@@ -11,7 +11,7 @@ build:
 	docker build -t $(REPO):$(VERSION) ./
 
 test:
-	echo "OK"
+	cd ./test/ && IMAGE=$(REPO):$(VERSION) ./test.sh
 
 push:
 	docker push $(REPO):$(VERSION)

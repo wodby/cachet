@@ -7,7 +7,7 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`2-3`, (*2.3/Dockerfile*)](https://github.com/wodby/cachet/tree/master/2.3/Dockerfile)
+- [`2.3`, (*2.3/Dockerfile*)](https://github.com/wodby/cachet/tree/master/2.3/Dockerfile)
 
 ## Environment variables available for customization
 

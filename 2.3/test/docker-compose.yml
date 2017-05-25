@@ -2,31 +2,40 @@ version: "2"
 
 services:
   nginx:
-    image: $NGINX_CACHET
+    image: wodby/cachet-nginx:2.3-1.13
     environment:
-      NGINX_BACKEND_HOST: php
-      NGINX_SERVER_NAME: cachet.test
+      NGINX_BACKEND_HOST: cachet
     volumes:
       - codebase:/var/www/html
+    ports:
+      - 8000:80
     depends_on:
-      - php
+      - cachet
 
-  mariadb:
-    image: $POSTGRES
+  postgres:
+    image: wodby/postgres:9.6
     environment:
       POSTGRES_USER: cachet
       POSTGRES_PASSWORD: cachet
       POSTGRES_DB: cachet
 
   redis:
-    image: $REDIS
+    image: wodby/redis:3.2
     environment:
       REDIS_PASSWORD: redis
 
-  php:
+  cachet:
     image: $IMAGE
     environment:
-      APP_KEY: cachet-generated-app-key
+      DEBUG: 1
+      CACHET_REDIS_HOST: redis
+      CACHET_REDIS_DATABASE: cachet
+      CACHET_DB_HOST: postgres
+      CACHET_DB_DATABASE: cachet
+      CACHET_DB_USERNAME: cachet
+      CACHET_DB_PASSWORD: cachet
+    depends_on:
+      - postgres
     volumes:
       - codebase:/var/www/html
 

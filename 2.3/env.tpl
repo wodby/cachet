@@ -1,16 +1,16 @@
 APP_ENV={{ getenv "CACHET_APP_ENV" "production" }}
 APP_DEBUG={{ getenv "CACHET_APP_DEBUG" "false" }}
 APP_URL={{ getenv "CACHET_APP_URL" "http://localhost" }}
-APP_KEY={{ getenv "CACHET_APP_KEY" "" }}
+APP_KEY=
 
 DB_DRIVER={{ getenv "CACHET_DB_DRIVER" "pgsql" }}
-DB_HOST={{ getenv "CACHET_DB_HOST" "postgres" }}
+DB_HOST={{ getenv "CACHET_DB_HOST" }}
 DB_UNIX_SOCKET={{ getenv "CACHET_DB_UNIX_SOCKET" "null" }}
-DB_DATABASE={{ getenv "CACHET_DB_DATABASE" "cachet" }}
-DB_USERNAME={{ getenv "CACHET_DB_USERNAME" "cachet" }}
-DB_PASSWORD={{ getenv "CACHET_DB_PASSWORD" "secret" }}
-DB_PORT={{ getenv "CACHET_DB_PORT" "null" }}
-DB_PREFIX={{ getenv "CACHET_DB_PREFIX" "null" }}
+DB_DATABASE={{ getenv "CACHET_DB_DATABASE" }}
+DB_USERNAME={{ getenv "CACHET_DB_USERNAME" }}
+DB_PASSWORD={{ getenv "CACHET_DB_PASSWORD" }}
+DB_PORT={{ getenv "CACHET_DB_PORT" "5432" }}
+DB_PREFIX={{ getenv "CACHET_DB_PREFIX" }}
 
 CACHE_DRIVER={{ getenv "CACHET_CACHE_DRIVER" "apc" }}
 SESSION_DRIVER={{ getenv "CACHET_SESSION_DRIVER" "apc" }}
@@ -20,9 +20,9 @@ CACHET_BEACON={{ getenv "CACHET_BEACON" "true" }}
 CACHET_EMOJI={{ getenv "CACHET_EMOJI" "false" }}
 CACHET_AUTO_TWITTER={{ getenv "CACHET_AUTO_TWITTER" "true" }}
 
-MAIL_DRIVER={{ getenv "CACHET_MAIL_DRIVER" "smtp" }}
-MAIL_HOST={{ getenv "CACHET_MAIL_HOST" "openstmpd" }}
-MAIL_PORT={{ getenv "CACHET_MAIL_PORT" "25" }}
+MAIL_DRIVER={{ getenv "CACHET_MAIL_DRIVER" "null" }}
+MAIL_HOST={{ getenv "CACHET_MAIL_HOST" "null" }}
+MAIL_PORT={{ getenv "CACHET_MAIL_PORT" "null" }}
 MAIL_USERNAME={{ getenv "CACHET_MAIL_USERNAME" "null" }}
 MAIL_PASSWORD={{ getenv "CACHET_MAIL_PASSWORD" "null" }}
 MAIL_ADDRESS={{ getenv "CACHET_MAIL_ADDRESS" "null" }}
