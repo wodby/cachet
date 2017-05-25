@@ -11,4 +11,5 @@ RUN set -ex && \
     su-exec www-data composer clear-cache
 
 COPY env.tpl /etc/gotpl/
+COPY actions /usr/local/bin/
 COPY init /docker-entrypoint-init.d/
