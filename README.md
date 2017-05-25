@@ -13,17 +13,6 @@
 
 See at [wodby/php](https://github.com/wodby/php)
 
-## Actions
-
-Usage:
-
-```
-make COMMAND [params ...]
- 
-commands:
-    init
-```
-
 ## Using in production
 
 Deploy Cachet to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com).
