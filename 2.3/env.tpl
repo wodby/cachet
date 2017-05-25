@@ -1,4 +1,4 @@
-APP_ENV={{ getenv "CACHET_APP_ENV" "production" }}
+APP_ENV={{ getenv "CACHET_APP_ENV" "development" }}
 APP_DEBUG={{ getenv "CACHET_APP_DEBUG" "false" }}
 APP_URL={{ getenv "CACHET_APP_URL" "http://localhost" }}
 APP_KEY=
@@ -20,18 +20,18 @@ CACHET_BEACON={{ getenv "CACHET_BEACON" "true" }}
 CACHET_EMOJI={{ getenv "CACHET_EMOJI" "false" }}
 CACHET_AUTO_TWITTER={{ getenv "CACHET_AUTO_TWITTER" "true" }}
 
-MAIL_DRIVER={{ getenv "CACHET_MAIL_DRIVER" "null" }}
-MAIL_HOST={{ getenv "CACHET_MAIL_HOST" "null" }}
-MAIL_PORT={{ getenv "CACHET_MAIL_PORT" "null" }}
+MAIL_DRIVER={{ getenv "CACHET_MAIL_DRIVER" "smtp" }}
+MAIL_HOST={{ getenv "CACHET_MAIL_HOST" "localhost" }}
+MAIL_PORT={{ getenv "CACHET_MAIL_PORT" "25" }}
 MAIL_USERNAME={{ getenv "CACHET_MAIL_USERNAME" "null" }}
 MAIL_PASSWORD={{ getenv "CACHET_MAIL_PASSWORD" "null" }}
 MAIL_ADDRESS={{ getenv "CACHET_MAIL_ADDRESS" "null" }}
 MAIL_NAME={{ getenv "CACHET_MAIL_NAME" "null" }}
-MAIL_ENCRYPTION={{ getenv "CACHET_MAIL_ENCRYPTION" "tls" }}
+MAIL_ENCRYPTION={{ getenv "CACHET_MAIL_ENCRYPTION" "null" }}
 
 REDIS_HOST={{ getenv "CACHET_REDIS_HOST" "null" }}
-REDIS_DATABASE={{ getenv "CACHET_REDIS_DATABASE" "null" }}
-REDIS_PORT={{ getenv "CACHET_REDIS_PORT" "null" }}
+REDIS_DATABASE={{ getenv "CACHET_REDIS_DATABASE" "cachet" }}
+REDIS_PORT={{ getenv "CACHET_REDIS_PORT" "6379" }}
 
 GITHUB_TOKEN={{ getenv "CACHET_GITHUB_TOKEN" "null" }}
 

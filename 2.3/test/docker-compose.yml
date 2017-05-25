@@ -28,8 +28,7 @@ services:
     image: $IMAGE
     environment:
       DEBUG: 1
-      CACHET_REDIS_HOST: redis
-      CACHET_REDIS_DATABASE: cachet
+      CACHET_APP_DEBUG: 'true'
       CACHET_DB_HOST: postgres
       CACHET_DB_DATABASE: cachet
       CACHET_DB_USERNAME: cachet
