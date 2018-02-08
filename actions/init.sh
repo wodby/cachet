@@ -12,7 +12,7 @@ pass="${CACHET_DB_PASSWORD}"
 db="${CACHET_DB_DATABASE}"
 prefix="${CACHET_DB_PREFIX}"
 
-checkDBConnection() {
+check_db_connection() {
     echo "Checking database connection..."
     case "${CACHET_DB_DRIVER:=pgsql}" in
         mysql)
@@ -44,60 +44,60 @@ checkDBConnection() {
     echo 'DBMS has started!'
 }
 
-checkDBInit() {
+check_db_init() {
     case "${CACHET_DB_DRIVER}" in
         mysql)
-        checkDBInitMySQL
+        check_db_init_mysql
         ;;
         pgsql)
-        checkDBInitPostgres
+        check_db_init_postgres
         ;;
     esac
 }
 
-checkDBInitMySQL() {
+check_db_init_mysql() {
     table=sessions
     if [[ "$(mysql -N -s -h "${host}" -u "${user}" "${pass}" "${db}" -e \
         "select count(*) from information_schema.tables where \
             table_schema='${db}' and table_name='${prefix}${table}';")" -eq 1 ]]; then
         echo "DB is already initialized..."
     else
-        InitDB
+        init_db
     fi
 }
 
-checkDBInitPostgres() {
+check_db_init_postgres() {
     table=sessions
     if [[ "$(PGPASSWORD="${pass}" psql -h "${host}" -U "${user}" -d "${db}" \
         -c "SELECT to_regclass('${prefix}${table}');" | grep -c "${prefix}${table}")" -eq 1 ]]; then
         echo "DB is already initialized..."
     else
-        InitDB
+        init_db
     fi
 }
 
-InitDB() {
+init_db() {
     echo "Initializing Cachet database ..."
     php artisan app:install
     php artisan config:cache
 }
 
-copyCachet() {
-    if ! [ -e "${APP_ROOT}/server.php" ]; then
+copy_cachet() {
+    if [[ ! -f "${APP_ROOT}/server.php" ]]; then
         echo >&2 "Cachet not found in ${APP_ROOT} - copying now..."
-        rsync -rlt "/usr/src/cachet/" "${APP_ROOT}/"
+        rsync -rplt "/usr/src/cachet/" "${APP_ROOT}/"
         echo >&2 "Complete! Cachet has been successfully copied to ${APP_ROOT}"
         rm -rf bootstrap/cache/*
         chmod -R 777 storage
     fi
 }
 
-copyCachet
+copy_cachet
 
 if [[ -n "${host}" ]]; then
     gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
-    checkDBConnection
-    checkDBInit
+    check_db_connection
+    check_db_init
     touch /home/www-data/.initialized
 else
     echo "DB credentials missing, omit initialization."

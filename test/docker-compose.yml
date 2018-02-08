@@ -2,9 +2,10 @@ version: "2"
 
 services:
   nginx:
-    image: wodby/cachet-nginx:2.3-1.13
+    image: wodby/php-nginx
     environment:
       NGINX_BACKEND_HOST: cachet
+      NGINX_SERVER_ROOT: /var/www/html/public
     volumes:
       - codebase:/var/www/html
     ports:
