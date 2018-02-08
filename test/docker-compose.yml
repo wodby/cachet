@@ -29,6 +29,7 @@ services:
     image: $IMAGE
     environment:
       DEBUG: 1
+      WODBY_APP_NAME: cachet
       CACHET_APP_DEBUG: 'true'
       CACHET_DB_HOST: postgres
       CACHET_DB_DATABASE: cachet
