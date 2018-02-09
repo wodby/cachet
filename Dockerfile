@@ -1,4 +1,6 @@
-FROM wodby/php:7.1-3.6.1
+ARG BASE_IMAGE_TAG
+
+FROM wodby/php:${BASE_IMAGE_TAG}
 
 ARG CACHET_VER
 
@@ -10,16 +12,16 @@ USER root
 RUN set -ex; \
     \
     mkdir -p /usr/src/cachet; \
-    wget -qO- "https://github.com/CachetHQ/Cachet/archive/v${CACHET_VER}.tar.gz" \
-        | tar xz --strip-components=1 -C /usr/src/cachet; \
-    chown -R www-data:www-data /usr/src/cachet; \
+    cachet_url="https://github.com/CachetHQ/Cachet/archive/v${CACHET_VER}.tar.gz"; \
+    wget -qO- "${cachet_url}" | tar xz --strip-components=1 -C /usr/src/cachet; \
+    chown -R wodby:wodby /usr/src/cachet; \
     \
     mv /usr/local/bin/actions.mk /usr/local/bin/php.mk; \
     \
-    su-exec www-data composer install -d /usr/src/cachet --no-dev -o; \
-    su-exec www-data composer clear-cache
+    su-exec wodby composer install -d /usr/src/cachet --no-dev -o; \
+    su-exec wodby composer clear-cache
 
-USER www-data
+USER wodby
 
 COPY templates /etc/gotpl/
 COPY actions /usr/local/bin/

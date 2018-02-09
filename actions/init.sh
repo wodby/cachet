@@ -98,7 +98,6 @@ if [[ -n "${host}" ]]; then
     gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
     check_db_connection
     check_db_init
-    touch /home/www-data/.initialized
 else
     echo "DB credentials missing, omit initialization."
 fi
