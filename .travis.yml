@@ -6,7 +6,7 @@ services:
 env:
   global:
     - LATEST_TAG=2.3
-    - BASE_IMAGE_STABILITY_TAG=4.0.0
+    - BASE_IMAGE_STABILITY_TAG=4.0.2
   matrix:
     - TAG=2.3 CACHET_VER=2.3.13 EXTRA_TAG=2
 
