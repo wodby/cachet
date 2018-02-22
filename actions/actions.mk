@@ -5,4 +5,4 @@
 default: init
 
 init:
-	init.sh
+	init
