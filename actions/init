@@ -79,16 +79,32 @@ check_db_init_postgres() {
 init_db() {
     echo "Initializing Cachet database ..."
     php artisan app:install
+    php artisan app:update
     php artisan config:cache
 }
 
 copy_cachet() {
+    src_dir="/usr/src/cachet"
+
     if [[ ! -f "${APP_ROOT}/server.php" ]]; then
-        echo >&2 "Cachet not found in ${APP_ROOT} - copying now..."
-        rsync -rplt "/usr/src/cachet/" "${APP_ROOT}/"
-        echo >&2 "Complete! Cachet has been successfully copied to ${APP_ROOT}"
+        echo "${APP_NAME} not found in ${APP_ROOT} - copying now..."
+        rsync -rplt "${src_dir}/" "${APP_ROOT}/"
+        echo "Complete! ${APP_NAME} has been successfully copied to ${APP_ROOT}"
         rm -rf bootstrap/cache/*
         chmod -R 777 storage
+    else
+        latest_ver=$(cat "${src_dir}/VERSION")
+        current_ver=$(cat "${APP_ROOT}/VERSION")
+
+        res=$(compare-semver.sh "${latest_ver}" "${current_ver}" ">")
+
+        if [[ "${res}" == 0 ]]; then
+            echo "Current version of ${APP_NAME} is outdated (${current_ver}), updating to ${latest_ver}..."
+            rsync -rplt "${src_dir}/" "${APP_ROOT}/"
+            echo "Complete! ${APP_NAME} has been successfully updated to ${latest_ver}"
+            rm -rf bootstrap/cache/*
+            chmod -R 777 storage
+        fi
     fi
 }
 
