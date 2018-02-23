@@ -10,7 +10,7 @@ env:
     - TAG=2.3 CACHET_VER=2.3.13 EXTRA_TAG=2
 
 script:
-  - make && make test
-
-after_success:
+  - set -e
+  - make
+  - make test
   - bash "${TRAVIS_BUILD_DIR}/travis_release"
