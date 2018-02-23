@@ -17,8 +17,16 @@ RUN set -ex; \
     chown -R wodby:wodby /usr/src/cachet; \
     cd /usr/src/cachet/; \
     touch .env; \
-    chown -R wodby:www-data .env bootstrap/cache storage; \
-    chmod -R 775 .env bootstrap/cache storage; \
+    chown -R wodby:www-data \
+        .env \
+        bootstrap/cache \
+        bootstrap/cachet \
+        storage; \
+    chmod -R 775 \
+        .env \
+        bootstrap/cache \
+        bootstrap/cachet \
+        storage; \
     \
     echo "$(cat /etc/sudoers.d/wodby), /usr/local/bin/init" > /etc/sudoers.d/wodby; \
     \
