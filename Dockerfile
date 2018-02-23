@@ -15,9 +15,12 @@ RUN set -ex; \
     cachet_url="https://github.com/CachetHQ/Cachet/archive/v${CACHET_VER}.tar.gz"; \
     wget -qO- "${cachet_url}" | tar xz --strip-components=1 -C /usr/src/cachet; \
     chown -R wodby:wodby /usr/src/cachet; \
-    touch /usr/src/cachet/.env; \
-    chown wodby:www-data /usr/src/cachet/.env; \
-    chmod 775 /usr/src/cachet/.env; \
+    cd /usr/src/cachet/; \
+    touch .env; \
+    chown -R wodby:www-data .env storage; \
+    chmod -R 775 .env storage; \
+    \
+    echo "$(cat /etc/sudoers.d/wodby), /usr/local/bin/init" > /etc/sudoers.d/wodby; \
     \
     mv /usr/local/bin/actions.mk /usr/local/bin/php.mk; \
     \
