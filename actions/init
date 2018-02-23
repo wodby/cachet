@@ -79,7 +79,6 @@ check_db_init_postgres() {
 init_db() {
     echo "Initializing Cachet database ..."
     su-exec wodby php artisan app:install
-    su-exec wodby php artisan app:update
     su-exec wodby php artisan config:cache
 }
 
@@ -89,6 +88,7 @@ copy_cachet() {
     if [[ ! -f "${APP_ROOT}/server.php" ]]; then
         echo "${APP_NAME} not found in ${APP_ROOT} - copying now..."
         rsync -a "${src_dir}/" "${APP_ROOT}/"
+        su-exec wodby gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
         echo "Complete! ${APP_NAME} has been successfully copied to ${APP_ROOT}"
         rm -rf bootstrap/cache/*
     else
@@ -101,6 +101,7 @@ copy_cachet() {
             echo "Current version of ${APP_NAME} is outdated (${current_ver}), updating to ${latest_ver}..."
             rsync -a "${src_dir}/" "${APP_ROOT}/"
             echo "Complete! ${APP_NAME} has been successfully updated to ${latest_ver}"
+            su-exec wodby php artisan app:update
             rm -rf bootstrap/cache/*
         fi
     fi
@@ -109,7 +110,6 @@ copy_cachet() {
 copy_cachet
 
 if [[ -n "${host}" ]]; then
-    su-exec wodby gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
     check_db_connection
     check_db_init
 else
