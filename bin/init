@@ -99,7 +99,7 @@ copy_cachet() {
 
         if [[ "${res}" == 0 ]]; then
             echo "Current version of ${APP_NAME} is outdated (${current_ver}), updating to ${latest_ver}..."
-            rsync -a "${src_dir}/" "${APP_ROOT}/"
+            rsync -a --exclude=.env "${src_dir}/" "${APP_ROOT}/"
             echo "Complete! ${APP_NAME} has been successfully updated to ${latest_ver}"
             su-exec wodby php artisan app:update
             rm -rf bootstrap/cache/*
