@@ -5,7 +5,8 @@ FROM wodby/php:${BASE_IMAGE_TAG}
 ARG CACHET_VER
 
 ENV APP_NAME="Cachet" \
-    CACHET_VER="${CACHET_VER}"
+    CACHET_VER="${CACHET_VER}" \
+    PHP_ERROR_REPORTING="E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"
 
 USER root
 
@@ -15,6 +16,20 @@ RUN set -ex; \
     cachet_url="https://github.com/CachetHQ/Cachet/archive/v${CACHET_VER}.tar.gz"; \
     wget -qO- "${cachet_url}" | tar xz --strip-components=1 -C /usr/src/cachet; \
     chown -R wodby:wodby /usr/src/cachet; \
+    cd /usr/src/cachet/; \
+    touch .env; \
+    chown -R wodby:www-data \
+        .env \
+        bootstrap/cache \
+        bootstrap/cachet \
+        storage; \
+    chmod -R 775 \
+        .env \
+        bootstrap/cache \
+        bootstrap/cachet \
+        storage; \
+    \
+    echo "$(cat /etc/sudoers.d/wodby), /usr/local/bin/init" > /etc/sudoers.d/wodby; \
     \
     mv /usr/local/bin/actions.mk /usr/local/bin/php.mk; \
     \
@@ -24,5 +39,5 @@ RUN set -ex; \
 USER wodby
 
 COPY templates /etc/gotpl/
-COPY actions /usr/local/bin/
+COPY bin /usr/local/bin/
 COPY init /docker-entrypoint-init.d/

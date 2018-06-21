@@ -78,9 +78,8 @@ check_db_init_postgres() {
 
 init_db() {
     echo "Initializing Cachet database ..."
-    php artisan app:install
-    php artisan app:update
-    php artisan config:cache
+    su-exec wodby php artisan app:install
+    su-exec wodby php artisan config:cache
 }
 
 copy_cachet() {
@@ -88,10 +87,10 @@ copy_cachet() {
 
     if [[ ! -f "${APP_ROOT}/server.php" ]]; then
         echo "${APP_NAME} not found in ${APP_ROOT} - copying now..."
-        rsync -rplt "${src_dir}/" "${APP_ROOT}/"
+        rsync -a "${src_dir}/" "${APP_ROOT}/"
+        su-exec wodby gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
         echo "Complete! ${APP_NAME} has been successfully copied to ${APP_ROOT}"
         rm -rf bootstrap/cache/*
-        chmod -R 777 storage
     else
         latest_ver=$(cat "${src_dir}/VERSION")
         current_ver=$(cat "${APP_ROOT}/VERSION")
@@ -100,10 +99,10 @@ copy_cachet() {
 
         if [[ "${res}" == 0 ]]; then
             echo "Current version of ${APP_NAME} is outdated (${current_ver}), updating to ${latest_ver}..."
-            rsync -rplt "${src_dir}/" "${APP_ROOT}/"
+            rsync -a "${src_dir}/" "${APP_ROOT}/"
             echo "Complete! ${APP_NAME} has been successfully updated to ${latest_ver}"
+            su-exec wodby php artisan app:update
             rm -rf bootstrap/cache/*
-            chmod -R 777 storage
         fi
     fi
 }
@@ -111,7 +110,6 @@ copy_cachet() {
 copy_cachet
 
 if [[ -n "${host}" ]]; then
-    gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
     check_db_connection
     check_db_init
 else
