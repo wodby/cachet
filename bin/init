@@ -95,7 +95,7 @@ copy_cachet() {
         latest_ver=$(cat "${src_dir}/VERSION")
         current_ver=$(cat "${APP_ROOT}/VERSION")
 
-        res=$(compare-semver.sh "${latest_ver}" "${current_ver}" ">")
+        res=$(compare_semver "${latest_ver}" "${current_ver}" ">")
 
         if [[ "${res}" == 0 ]]; then
             echo "Current version of ${APP_NAME} is outdated (${current_ver}), updating to ${latest_ver}..."
