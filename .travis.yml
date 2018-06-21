@@ -4,10 +4,7 @@ services:
   - docker
 
 env:
-  global:
-    - LATEST_TAG=2.3
-  matrix:
-    - TAG=2.3 CACHET_VER=2.3.13 EXTRA_TAG=2
+  - CACHET_VER=2.3.15 TAGS=2.3,2,latest
 
 script:
   - make && make test
