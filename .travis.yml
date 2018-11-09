@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    - BASE_IMAGE_STABILITY_TAG=4.8.0
+    - BASE_IMAGE_STABILITY_TAG=4.8.1
     - CACHET_VER=2.3.15 TAGS=2.3,2,latest
 
 script:
