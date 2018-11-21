@@ -6,15 +6,15 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-host="${CACHET_DB_HOST}"
-user="${CACHET_DB_USERNAME}"
-pass="${CACHET_DB_PASSWORD}"
-db="${CACHET_DB_DATABASE}"
-prefix="${CACHET_DB_PREFIX}"
+host="${DB_HOST}"
+user="${DB_USERNAME}"
+pass="${DB_PASSWORD}"
+db="${DB_DATABASE}"
+prefix="${DB_PREFIX}"
 
 check_db_connection() {
     echo "Checking database connection..."
-    case "${CACHET_DB_DRIVER:=pgsql}" in
+    case "${DB_DRIVER:=pgsql}" in
         mysql)
             cmd="mysqladmin -h ${host} -u ${user} ${pass} status"
             ;;
@@ -45,7 +45,7 @@ check_db_connection() {
 }
 
 check_db_init() {
-    case "${CACHET_DB_DRIVER}" in
+    case "${DB_DRIVER}" in
         mysql)
         check_db_init_mysql
         ;;
@@ -88,7 +88,6 @@ copy_cachet() {
     if [[ ! -f "${APP_ROOT}/server.php" ]]; then
         echo "${APP_NAME} not found in ${APP_ROOT} - copying now..."
         rsync -a "${src_dir}/" "${APP_ROOT}/"
-        su-exec wodby gotpl "/etc/gotpl/env.tpl" > "${APP_ROOT}/.env"
         echo "Complete! ${APP_NAME} has been successfully copied to ${APP_ROOT}"
         rm -rf bootstrap/cache/*
     else
@@ -99,7 +98,7 @@ copy_cachet() {
 
         if [[ "${res}" == 0 ]]; then
             echo "Current version of ${APP_NAME} is outdated (${current_ver}), updating to ${latest_ver}..."
-            rsync -a --exclude=.env "${src_dir}/" "${APP_ROOT}/"
+            rsync -a "${src_dir}/" "${APP_ROOT}/"
             rm -rf bootstrap/cache/*
             su-exec wodby php artisan app:update
             echo "Complete! ${APP_NAME} has been successfully updated to ${latest_ver}"

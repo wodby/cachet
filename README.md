@@ -22,42 +22,14 @@ Supported tags and respective `Dockerfile` links:
 
 ## Environment Variables
 
-| Variable                 | Default Value      | Description |
-| -----------------------  | ------------------ | ----------- |
-| `CACHET_APP_ENV`         | `development`      |             |
-| `CACHET_APP_DEBUG`       | `false`            |             |
-| `CACHET_APP_URL`         | `http://localhost` |             |
-| `CACHET_DB_DRIVER`       | `pgsql`            |             |
-| `CACHET_DB_HOST`         |                    |             |
-| `CACHET_DB_UNIX_SOCKET`  | `null`             |             |
-| `CACHET_DB_DATABASE`     |                    |             |
-| `CACHET_DB_USERNAME`     |                    |             |
-| `CACHET_DB_PASSWORD`     |                    |             |
-| `CACHET_DB_PORT`         | `5432`             |             |
-| `CACHET_DB_PREFIX`       |                    |             |
-| `CACHET_CACHE_DRIVER`    | `apc`              |             |
-| `CACHET_SESSION_DRIVER`  | `apc`              |             |
-| `CACHET_QUEUE_DRIVER`    | `database`         |             |
-| `CACHET_BEACON`          | `true`             |             |
-| `CACHET_EMOJI`           | `false`            |             |
-| `CACHET_AUTO_TWITTER`    | `true`             |             |
-| `CACHET_MAIL_DRIVER`     | `smtp`             |             |
-| `CACHET_MAIL_HOST`       | `localhost`        |             |
-| `CACHET_MAIL_PORT`       | `25`               |             |
-| `CACHET_MAIL_USERNAME`   | `null`             |             |
-| `CACHET_MAIL_PASSWORD`   | `null`             |             |
-| `CACHET_MAIL_ADDRESS`    | `null`             |             |
-| `CACHET_MAIL_NAME`       | `null`             |             |
-| `CACHET_MAIL_ENCRYPTION` | `null`             |             |
-| `CACHET_REDIS_HOST`      | `null`             |             |
-| `CACHET_REDIS_DATABASE`  | `cachet`           |             |
-| `CACHET_REDIS_PORT`      | `6379`             |             |
-| `CACHET_GITHUB_TOKEN`    | `null`             |             |
-| `CACHET_NEXMO_KEY`       | `null`             |             |
-| `CACHET_NEXMO_SECRET`    | `null`             |             |
-| `CACHET_NEXMO_SMS_FROM`  | `Cachet`           |             |
+See `env.example` in [CachetHQ repository](https://github.com/CachetHQ/Cachet) for all Cachet environment variables.
 
-See [wodby/php](https://github.com/wodby/php) for all variables
+| Variable              | Default Value                                   | Description |
+| -----------------     | ------------------                              | ----------- |
+| `PHP_ERROR_REPORTING` | `E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED` |             |
+| `PHP_FPM_CLEAR_ENV`   | `no`                                            |             |
+
+See [wodby/php](https://github.com/wodby/php) for all image variables
 
 ## Orchestration Actions
 

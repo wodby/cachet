@@ -6,7 +6,8 @@ ARG CACHET_VER
 
 ENV APP_NAME="Cachet" \
     CACHET_VER="${CACHET_VER}" \
-    PHP_ERROR_REPORTING="E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"
+    PHP_ERROR_REPORTING="E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED" \
+    PHP_FPM_CLEAR_ENV="no"
 
 USER root
 
@@ -38,6 +39,5 @@ RUN set -ex; \
 
 USER wodby
 
-COPY templates /etc/gotpl/
 COPY bin /usr/local/bin/
 COPY init /docker-entrypoint-init.d/
