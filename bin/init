@@ -88,9 +88,12 @@ copy_cachet() {
     if [[ ! -f "${APP_ROOT}/server.php" ]]; then
         echo "${APP_NAME} not found in ${APP_ROOT} - copying now..."
         rsync -a "${src_dir}/" "${APP_ROOT}/"
+        su-exec wodby gotpl /etc/gotpl/env.tmpl > "${APP_ROOT}/.env"
         echo "Complete! ${APP_NAME} has been successfully copied to ${APP_ROOT}"
         rm -rf bootstrap/cache/*
     else
+        su-exec wodby gotpl /etc/gotpl/env.tmpl > "${APP_ROOT}/.env"
+
         latest_ver=$(cat "${src_dir}/VERSION")
         current_ver=$(cat "${APP_ROOT}/VERSION")
 
@@ -104,8 +107,6 @@ copy_cachet() {
             echo "Complete! ${APP_NAME} has been successfully updated to ${latest_ver}"
         fi
     fi
-
-    su-exec wodby gotpl /etc/gotpl/env.tmpl > "${APP_ROOT}/.env"
 }
 
 copy_cachet
