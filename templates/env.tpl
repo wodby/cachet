@@ -1,40 +1,40 @@
-APP_ENV={{ getenv "CACHET_APP_ENV" "development" }}
-APP_DEBUG={{ getenv "CACHET_APP_DEBUG" "false" }}
-APP_URL={{ getenv "CACHET_APP_URL" "http://localhost" }}
+APP_ENV={{ getenv "APP_ENV" "development" }}
+APP_DEBUG={{ getenv "APP_DEBUG" "false" }}
+APP_URL={{ getenv "APP_URL" "http://localhost" }}
 APP_KEY=
 
-DB_DRIVER={{ getenv "CACHET_DB_DRIVER" "pgsql" }}
-DB_HOST={{ getenv "CACHET_DB_HOST" }}
-DB_UNIX_SOCKET={{ getenv "CACHET_DB_UNIX_SOCKET" "null" }}
-DB_DATABASE={{ getenv "CACHET_DB_DATABASE" }}
-DB_USERNAME={{ getenv "CACHET_DB_USERNAME" }}
-DB_PASSWORD={{ getenv "CACHET_DB_PASSWORD" }}
-DB_PORT={{ getenv "CACHET_DB_PORT" "5432" }}
-DB_PREFIX={{ getenv "CACHET_DB_PREFIX" }}
+DB_DRIVER={{ getenv "DB_DRIVER" "pgsql" }}
+DB_HOST={{ getenv "DB_HOST" "postgres" }}
+DB_UNIX_SOCKET={{ getenv "DB_UNIX_SOCKET" "null" }}
+DB_DATABASE={{ getenv "DB_DATABASE" "cachet" }}
+DB_USERNAME={{ getenv "DB_USERNAME" }}
+DB_PASSWORD={{ getenv "DB_PASSWORD" }}
+DB_PORT={{ getenv "DB_PORT" "5432" }}
+DB_PREFIX={{ getenv "DB_PREFIX" }}
 
-CACHE_DRIVER={{ getenv "CACHET_CACHE_DRIVER" "apc" }}
-SESSION_DRIVER={{ getenv "CACHET_SESSION_DRIVER" "apc" }}
-QUEUE_DRIVER={{ getenv "CACHET_QUEUE_DRIVER" "database" }}
+CACHE_DRIVER={{ getenv "CACHE_DRIVER" "apc" }}
+SESSION_DRIVER={{ getenv "SESSION_DRIVER" "apc" }}
+QUEUE_DRIVER={{ getenv "QUEUE_DRIVER" "database" }}
 
-CACHET_BEACON={{ getenv "CACHET_BEACON" "true" }}
-CACHET_EMOJI={{ getenv "CACHET_EMOJI" "false" }}
-CACHET_AUTO_TWITTER={{ getenv "CACHET_AUTO_TWITTER" "true" }}
+BEACON={{ getenv "BEACON" "true" }}
+EMOJI={{ getenv "EMOJI" "false" }}
+AUTO_TWITTER={{ getenv "AUTO_TWITTER" "true" }}
 
-MAIL_DRIVER={{ getenv "CACHET_MAIL_DRIVER" "smtp" }}
-MAIL_HOST={{ getenv "CACHET_MAIL_HOST" "localhost" }}
-MAIL_PORT={{ getenv "CACHET_MAIL_PORT" "25" }}
-MAIL_USERNAME={{ getenv "CACHET_MAIL_USERNAME" "null" }}
-MAIL_PASSWORD={{ getenv "CACHET_MAIL_PASSWORD" "null" }}
-MAIL_ADDRESS={{ getenv "CACHET_MAIL_ADDRESS" "null" }}
-MAIL_NAME={{ getenv "CACHET_MAIL_NAME" "null" }}
-MAIL_ENCRYPTION={{ getenv "CACHET_MAIL_ENCRYPTION" "null" }}
+MAIL_DRIVER={{ getenv "MAIL_DRIVER" "smtp" }}
+MAIL_HOST={{ getenv "MAIL_HOST" "opensmtpd" }}
+MAIL_PORT={{ getenv "MAIL_PORT" "25" }}
+MAIL_USERNAME={{ getenv "MAIL_USERNAME" "null" }}
+MAIL_PASSWORD={{ getenv "MAIL_PASSWORD" "null" }}
+MAIL_ADDRESS={{ getenv "MAIL_ADDRESS" "null" }}
+MAIL_NAME={{ getenv "MAIL_NAME" "null" }}
+MAIL_ENCRYPTION={{ getenv "MAIL_ENCRYPTION" "null" }}
 
-REDIS_HOST={{ getenv "CACHET_REDIS_HOST" "null" }}
-REDIS_DATABASE={{ getenv "CACHET_REDIS_DATABASE" "cachet" }}
-REDIS_PORT={{ getenv "CACHET_REDIS_PORT" "6379" }}
+REDIS_HOST={{ getenv "REDIS_HOST" "null" }}
+REDIS_DATABASE={{ getenv "REDIS_DATABASE" "cachet" }}
+REDIS_PORT={{ getenv "REDIS_PORT" "6379" }}
 
-GITHUB_TOKEN={{ getenv "CACHET_GITHUB_TOKEN" "null" }}
+GITHUB_TOKEN={{ getenv "GITHUB_TOKEN" "null" }}
 
-NEXMO_KEY={{ getenv "CACHET_NEXMO_KEY" "null" }}
-NEXMO_SECRET={{ getenv "CACHET_NEXMO_SECRET" "null" }}
-NEXMO_SMS_FROM={{ getenv "CACHET_NEXMO_SMS_FROM" "Cachet" }}
+NEXMO_KEY={{ getenv "NEXMO_KEY" "null" }}
+NEXMO_SECRET={{ getenv "NEXMO_SECRET" "null" }}
+NEXMO_SMS_FROM={{ getenv "NEXMO_SMS_FROM" "Cachet" }}

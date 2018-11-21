@@ -6,15 +6,15 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-host="${CACHET_DB_HOST}"
-user="${CACHET_DB_USERNAME}"
-pass="${CACHET_DB_PASSWORD}"
-db="${CACHET_DB_DATABASE}"
-prefix="${CACHET_DB_PREFIX}"
+host="${DB_HOST}"
+user="${DB_USERNAME}"
+pass="${DB_PASSWORD}"
+db="${DB_DATABASE}"
+prefix="${DB_PREFIX}"
 
 check_db_connection() {
     echo "Checking database connection..."
-    case "${CACHET_DB_DRIVER:=pgsql}" in
+    case "${DB_DRIVER:=pgsql}" in
         mysql)
             cmd="mysqladmin -h ${host} -u ${user} ${pass} status"
             ;;
@@ -45,7 +45,7 @@ check_db_connection() {
 }
 
 check_db_init() {
-    case "${CACHET_DB_DRIVER}" in
+    case "${DB_DRIVER}" in
         mysql)
         check_db_init_mysql
         ;;

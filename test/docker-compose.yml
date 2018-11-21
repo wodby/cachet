@@ -14,14 +14,14 @@ services:
       - cachet
 
   postgres:
-    image: wodby/postgres:9.6
+    image: wodby/postgres
     environment:
       POSTGRES_USER: cachet
       POSTGRES_PASSWORD: cachet
       POSTGRES_DB: cachet
 
   redis:
-    image: wodby/redis:3.2
+    image: wodby/redis
     environment:
       REDIS_PASSWORD: redis
 
@@ -30,11 +30,11 @@ services:
     environment:
       DEBUG: 1
       WODBY_APP_NAME: cachet
-      CACHET_APP_DEBUG: 'true'
-      CACHET_DB_HOST: postgres
-      CACHET_DB_DATABASE: cachet
-      CACHET_DB_USERNAME: cachet
-      CACHET_DB_PASSWORD: cachet
+      APP_DEBUG: 'true'
+      DB_HOST: postgres
+      DB_DATABASE: cachet
+      DB_USERNAME: cachet
+      DB_PASSWORD: cachet
     depends_on:
       - postgres
     volumes:
