@@ -42,7 +42,7 @@ Supported tags and respective `Dockerfile` links:
 | `EMOJI`           | `false`            |             |
 | `AUTO_TWITTER`    | `true`             |             |
 | `MAIL_DRIVER`     | `smtp`             |             |
-| `MAIL_HOST`       | `opensmtpd`        |             |
+| `MAIL_HOST`       | `null`             |             |
 | `MAIL_PORT`       | `25`               |             |
 | `MAIL_USERNAME`   | `null`             |             |
 | `MAIL_PASSWORD`   | `null`             |             |

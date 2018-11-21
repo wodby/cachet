@@ -21,7 +21,7 @@ EMOJI={{ getenv "EMOJI" "false" }}
 AUTO_TWITTER={{ getenv "AUTO_TWITTER" "true" }}
 
 MAIL_DRIVER={{ getenv "MAIL_DRIVER" "smtp" }}
-MAIL_HOST={{ getenv "MAIL_HOST" "opensmtpd" }}
+MAIL_HOST={{ getenv "MAIL_HOST" "null" }}
 MAIL_PORT={{ getenv "MAIL_PORT" "25" }}
 MAIL_USERNAME={{ getenv "MAIL_USERNAME" "null" }}
 MAIL_PASSWORD={{ getenv "MAIL_PASSWORD" "null" }}
