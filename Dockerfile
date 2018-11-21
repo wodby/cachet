@@ -18,11 +18,14 @@ RUN set -ex; \
     wget -qO- "${cachet_url}" | tar xz --strip-components=1 -C /usr/src/cachet; \
     chown -R wodby:wodby /usr/src/cachet; \
     cd /usr/src/cachet/; \
+    touch .env; \
     chown -R wodby:www-data \
+        .env \
         bootstrap/cache \
         bootstrap/cachet \
         storage; \
     chmod -R 775 \
+        .env \
         bootstrap/cache \
         bootstrap/cachet \
         storage; \

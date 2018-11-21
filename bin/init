@@ -94,9 +94,6 @@ copy_cachet() {
         latest_ver=$(cat "${src_dir}/VERSION")
         current_ver=$(cat "${APP_ROOT}/VERSION")
 
-        # Migration from older versions.
-        rm -f "${APP_ROOT}/.env"
-
         res=$(compare_semver "${latest_ver}" "${current_ver}" ">")
 
         if [[ "${res}" == 0 ]]; then
