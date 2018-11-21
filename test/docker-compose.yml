@@ -31,6 +31,7 @@ services:
       DEBUG: 1
       WODBY_APP_NAME: cachet
       APP_DEBUG: 'true'
+      APP_KEY: base64:ZbMEb8nf0xLI8ZJjXeSVClC5gMWoS/yAKNl8P9mVF/c=
       DB_HOST: postgres
       DB_DRIVER: pgsql
       DB_DATABASE: cachet
