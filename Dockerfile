@@ -6,7 +6,8 @@ ARG CACHET_VER
 
 ENV APP_NAME="Cachet" \
     CACHET_VER="${CACHET_VER}" \
-    PHP_ERROR_REPORTING="E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"
+    PHP_ERROR_REPORTING="E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED" \
+    PHP_FPM_CLEAR_ENV="no"
 
 USER root
 
@@ -17,14 +18,11 @@ RUN set -ex; \
     wget -qO- "${cachet_url}" | tar xz --strip-components=1 -C /usr/src/cachet; \
     chown -R wodby:wodby /usr/src/cachet; \
     cd /usr/src/cachet/; \
-    touch .env; \
     chown -R wodby:www-data \
-        .env \
         bootstrap/cache \
         bootstrap/cachet \
         storage; \
     chmod -R 775 \
-        .env \
         bootstrap/cache \
         bootstrap/cachet \
         storage; \

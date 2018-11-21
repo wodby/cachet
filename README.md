@@ -22,42 +22,14 @@ Supported tags and respective `Dockerfile` links:
 
 ## Environment Variables
 
-| Variable          | Default Value      | Description |
-| ----------------- | ------------------ | ----------- |
-| `APP_ENV`         | `development`      |             |
-| `APP_DEBUG`       | `false`            |             |
-| `APP_URL`         | `http://localhost` |             |
-| `DB_DRIVER`       | `pgsql`            |             |
-| `DB_HOST`         | `postgres`         |             |
-| `DB_UNIX_SOCKET`  | `null`             |             |
-| `DB_DATABASE`     | `cachet`           |             |
-| `DB_USERNAME`     |                    |             |
-| `DB_PASSWORD`     |                    |             |
-| `DB_PORT`         | `5432`             |             |
-| `DB_PREFIX`       |                    |             |
-| `CACHE_DRIVER`    | `apc`              |             |
-| `SESSION_DRIVER`  | `apc`              |             |
-| `QUEUE_DRIVER`    | `database`         |             |
-| `BEACON`          | `true`             |             |
-| `EMOJI`           | `false`            |             |
-| `AUTO_TWITTER`    | `true`             |             |
-| `MAIL_DRIVER`     | `smtp`             |             |
-| `MAIL_HOST`       | `null`             |             |
-| `MAIL_PORT`       | `25`               |             |
-| `MAIL_USERNAME`   | `null`             |             |
-| `MAIL_PASSWORD`   | `null`             |             |
-| `MAIL_ADDRESS`    | `null`             |             |
-| `MAIL_NAME`       | `null`             |             |
-| `MAIL_ENCRYPTION` | `null`             |             |
-| `REDIS_HOST`      | `null`             |             |
-| `REDIS_DATABASE`  | `cachet`           |             |
-| `REDIS_PORT`      | `6379`             |             |
-| `GITHUB_TOKEN`    | `null`             |             |
-| `NEXMO_KEY`       | `null`             |             |
-| `NEXMO_SECRET`    | `null`             |             |
-| `NEXMO_SMS_FROM`  | `Cachet`           |             |
+See `env.example` in [CachetHQ repository](https://github.com/CachetHQ/Cachet) for all Cachet environment variables.
 
-See [wodby/php](https://github.com/wodby/php) for all variables
+| Variable              | Default Value                                   | Description |
+| -----------------     | ------------------                              | ----------- |
+| `PHP_ERROR_REPORTING` | `E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED` |             |
+| `PHP_FPM_CLEAR_ENV`   | `no`                                            |             |
+
+See [wodby/php](https://github.com/wodby/php) for all image variables
 
 ## Orchestration Actions
 
