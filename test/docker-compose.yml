@@ -32,6 +32,7 @@ services:
       WODBY_APP_NAME: cachet
       APP_DEBUG: 'true'
       DB_HOST: postgres
+      DB_DRIVER: pgsql
       DB_DATABASE: cachet
       DB_USERNAME: cachet
       DB_PASSWORD: cachet
