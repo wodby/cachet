@@ -5,6 +5,7 @@ services:
 
 env:
 - BASE_IMAGE_STABILITY_TAG=4.11.9
+- GIT_MERGE_SEPARATOR_DUMMY_ENV_VAR=1
 - CACHET_VER=2.3.15 TAGS=2.3,2,latest
 
 script:
