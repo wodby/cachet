@@ -1,13 +1,20 @@
 language: bash
 
 services:
-  - docker
+- docker
 
 env:
-  - CACHET_VER=2.3.15 TAGS=2.3,2,latest
+- CACHET_VER=2.3.15 TAGS=2.3,2,latest
 
 script:
-  - make && make test
+- make && make test
 
 after_success:
-  - . "${TRAVIS_BUILD_DIR}/release.sh"
+- . "${TRAVIS_BUILD_DIR}/release.sh"
+
+notifications:
+  email:
+    recipients:
+    - travisci@wodby.com
+    on_success: never
+    on_failure: always
