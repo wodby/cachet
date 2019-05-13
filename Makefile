@@ -1,6 +1,6 @@
 -include env_make
 
-CACHET_VER ?= 2.3.15
+CACHET_VER ?= 2.3.16
 CACHET_MINOR_VER ?= $(shell echo "${CACHET_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 TAG ?= $(CACHET_MINOR_VER)
