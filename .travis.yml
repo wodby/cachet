@@ -4,7 +4,7 @@ services:
 - docker
 
 env:
-- CACHET_VER=2.3.16 TAGS=2.3,2,latest
+- CACHET_VER=2.3.17 TAGS=2.3,2,latest
 
 script:
 - make && make test
