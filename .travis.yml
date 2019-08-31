@@ -4,7 +4,7 @@ services:
 - docker
 
 env:
-- BASE_IMAGE_STABILITY_TAG=4.12.5
+- BASE_IMAGE_STABILITY_TAG=4.12.6
 - CACHET_VER=2.3.18 TAGS=2.3,2,latest
 
 script:
