@@ -5,7 +5,7 @@ CACHET_MINOR_VER ?= $(shell echo "${CACHET_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 TAG ?= $(CACHET_MINOR_VER)
 
-PHP_VER ?= 7.2
+PHP_VER ?= 7.1
 BASE_IMAGE_TAG = $(PHP_VER)
 
 REPO = wodby/cachet
