@@ -4,8 +4,9 @@ services:
 - docker
 
 env:
-- BASE_IMAGE_STABILITY_TAG=4.13.2
-- CACHET_VER=2.3.18 TAGS=2.3,2,latest
+  global:
+  - BASE_IMAGE_STABILITY_TAG=4.13.2
+  - CACHET_VER=2.3.18 TAGS=2.3,2,latest
 
 script:
 - make && make test
