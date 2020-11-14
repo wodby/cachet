@@ -1,6 +1,6 @@
 # Cachet Docker Container Image
 
-[![Build Status](https://travis-ci.org/wodby/cachet.svg?branch=master)](https://travis-ci.org/wodby/cachet)
+[![Build Status](https://github.com/wodby/cachet/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/cachet/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/cachet.svg)](https://hub.docker.com/r/wodby/cachet)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/cachet.svg)](https://hub.docker.com/r/wodby/cachet)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/cachet.svg)](https://microbadger.com/images/wodby/cachet)
@@ -11,14 +11,14 @@
 
 Overview:
 
-* All images are based on Alpine Linux
-* Base image: [wodby/php](https://github.com/wodby/php)
-* [TravisCI builds](https://travis-ci.org/wodby/cachet) 
-* [Docker Hub](https://hub.docker.com/r/wodby/cachet)
+- All images based on Alpine Linux
+- Base image: [wodby/php](https://github.com/wodby/php)
+- [GitHub actions builds](https://github.com/wodby/cachet/actions) 
+- [Docker Hub](https://hub.docker.com/r/wodby/cachet)
 
 Supported tags and respective `Dockerfile` links:
 
-* `2.3`, `2`, `latest` [_(Dockerfile)_](https://github.com/wodby/cachet/tree/master/Dockerfile)
+- `2.3`, `2`, `latest` [_(Dockerfile)_](https://github.com/wodby/cachet/tree/master/Dockerfile)
 
 ## Environment Variables
 
