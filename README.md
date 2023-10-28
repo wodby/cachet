@@ -7,7 +7,7 @@
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/cachet:2.3-X.X.X`) which correspond to [git tags](https://github.com/wodby/cachet/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/cachet:2.4-X.X.X`) which correspond to [git tags](https://github.com/wodby/cachet/releases). We strongly recommend using images only with stability tags. 
 
 Overview:
 
@@ -18,7 +18,7 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-- `2.3`, `2`, `latest` [_(Dockerfile)_](https://github.com/wodby/cachet/tree/master/Dockerfile)
+- `2.4`, `2`, `latest` [_(Dockerfile)_](https://github.com/wodby/cachet/tree/master/Dockerfile)
 
 ## Environment Variables
 
