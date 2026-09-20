@@ -1,5 +1,8 @@
 -include env_make
 
+# Accept legacy build arguments during the image revision transition.
+IMAGE_REVISION ?= $(STABILITY_TAG)
+
 CACHET_VER ?= 2.4.1
 CACHET_MINOR_VER ?= $(shell echo "${CACHET_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
@@ -11,9 +14,11 @@ BASE_IMAGE_TAG = $(PHP_VER)
 REPO = wodby/cachet
 NAME = cachet-$(CACHET_MINOR_VER)
 
-ifneq ($(STABILITY_TAG),)
+ifneq ($(IMAGE_REVISION),)
     ifneq ($(TAG),latest)
-        override TAG := $(TAG)-$(STABILITY_TAG)
+        override TAG := $(TAG)-$(IMAGE_REVISION)
+    else ifneq ($(filter r%,$(IMAGE_REVISION)),)
+        override TAG := $(IMAGE_REVISION)
     endif
 endif
 
