@@ -9,6 +9,8 @@ on:
     - '*'
     - '!*-r[0-9]*'
 
+  pull_request:
+
 env:
   BASE_IMAGE_REVISION: 4.14.0
 
@@ -23,8 +25,8 @@ jobs:
         php_ver: 7.1
         base_image_revision: ${{ env.BASE_IMAGE_REVISION }}
         tags: 2.4,2,latest
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ github.event_name != 'pull_request' && secrets.DOCKER_USERNAME || '' }}
+        password: ${{ github.event_name != 'pull_request' && secrets.DOCKER_PASSWORD || '' }}
 
   image-revision-aliases:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/r')
@@ -38,5 +40,5 @@ jobs:
     steps:
       - uses: wodby/images/.github/actions/image-revision-aliases@6a3956567002e48847338be97b4d955ee40ae7cb
         with:
-          docker_username: ${{ secrets.DOCKER_USERNAME }}
-          docker_password: ${{ secrets.DOCKER_PASSWORD }}
+          docker_username: ${{ github.event_name != 'pull_request' && secrets.DOCKER_USERNAME || '' }}
+          docker_password: ${{ github.event_name != 'pull_request' && secrets.DOCKER_PASSWORD || '' }}

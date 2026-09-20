@@ -78,7 +78,8 @@ check_db_init_postgres() {
 
 init_db() {
     echo "Initializing Cachet database ..."
-    su-exec wodby php artisan app:install
+    # The container receives its configuration through environment variables.
+    su-exec wodby php artisan cachet:install --no-interaction
     su-exec wodby php artisan config:cache
 }
 
