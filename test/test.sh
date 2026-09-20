@@ -22,7 +22,7 @@ docker compose exec -T cachet make check-ready max_try=10 -f /usr/local/bin/acti
 docker compose exec -T nginx make check-ready max_try=10 -f /usr/local/bin/actions.mk
 docker compose exec -T cachet make init -f /usr/local/bin/actions.mk
 response=$(docker compose exec -T cachet curl --fail --location --silent --show-error nginx)
-if ! grep -q "Setup Cachet" <<< "${response}"; then
+if ! grep -q 'id="setup-form"' <<< "${response}"; then
     printf '%s\n' "${response}"
     echo >&2 'Cachet setup page was not returned.'
     exit 1
