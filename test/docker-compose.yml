@@ -1,5 +1,3 @@
-version: "2"
-
 services:
   nginx:
     image: wodby/php-nginx
@@ -30,7 +28,8 @@ services:
     environment:
       DEBUG: 1
       WODBY_APP_NAME: cachet
-      APP_DEBUG: 'true'
+      APP_ENV: production
+      APP_DEBUG: 'false'
       APP_KEY: base64:ZbMEb8nf0xLI8ZJjXeSVClC5gMWoS/yAKNl8P9mVF/c=
       DB_HOST: postgres
       DB_DRIVER: pgsql
