@@ -9,7 +9,7 @@ on:
     - '*'
 
 env:
-  BASE_IMAGE_STABILITY_TAG: 4.14.0
+  BASE_IMAGE_REVISION: 4.14.0
 
 jobs:
   cachet-23:
@@ -20,7 +20,7 @@ jobs:
       with:
         version: '2.4.1'
         php_ver: 7.1
-        base_image_stability_tag: ${{ env.BASE_IMAGE_STABILITY_TAG }}
+        base_image_revision: ${{ env.BASE_IMAGE_REVISION }}
         tags: 2.4,2,latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}

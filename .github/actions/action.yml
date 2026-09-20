@@ -16,8 +16,8 @@ inputs:
   password:
     description: docker password
     required: true
-  base_image_stability_tag:
-    description: base image stability tag
+  base_image_revision:
+    description: base image revision
     required: true
 runs:
   using: "composite"
@@ -26,7 +26,7 @@ runs:
     env:
       CACHET_VER: ${{ inputs.version }}
       PHP_VER: ${{ inputs.php_ver }}
-      BASE_IMAGE_STABILITY_TAG: ${{ inputs.base_image_stability_tag }}
+      BASE_IMAGE_REVISION: ${{ inputs.base_image_revision }}
       DOCKER_USERNAME: ${{ inputs.username }}
       DOCKER_PASSWORD: ${{ inputs.password }}
       TAGS: ${{ inputs.tags }}
